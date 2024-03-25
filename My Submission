@@ -1,0 +1,35 @@
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+import scipy.stats 
+import statsmodels.api as sm
+boston_url = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ST0151EN-SkillsNetwork/labs/boston_housing.csv'
+
+boston_df.describe()
+
+boston_df.head(10)
+
+ax = sns.boxplot(y = 'MEDV', data = boston_df)
+ax.set_title('Owner-occupied homes')
+
+ax2.set_title('Number of homes near the Charles River')
+
+boston_df.loc[(boston_df['AGE'] <= 35), 'Age_Group'] = '35 years and younger'
+boston_df.loc[(boston_df['AGE'] > 35) & (boston_df['AGE'] < 70), 'Age_Group'] = 'between 35 and 70 years'
+
+sns.relplot(x="Nitric Oxide Concentrations", y="Business Acres", hue="Town",
+            row="Retail",
+plt.show()
+
+sns.catplot(x='pupil', hue = 'teacher', kind='count', data=ratings_df)
+plt.show()
+
+#Is there a significant difference in median value of houses bounded by the Charles river or not? (T-test for independent samples)#
+ax = sns.boxplot(y = 'MEDV', data = boston_df)
+                  bins=20,
+                  kde=True,
+                  color='red',
+                  hist_kws={"linewidth": 15,'alpha':1})
+ax.set(xlabel='Normal Distribution', ylabel='Frequency')
+## we can assume it is normal
