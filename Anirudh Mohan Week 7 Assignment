@@ -1,0 +1,69 @@
+import piplite
+await piplite.install(['numpy'],['pandas'])
+await piplite.install(['seaborn'])
+
+import pandas as pd
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as pyplot
+
+import scipy.stats
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+
+from js import fetch
+import io
+
+URL = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ST0151EN-SkillsNetwork/labs/boston_housing.csv'
+resp = await fetch(URL)
+boston_url = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ST0151EN-SkillsNetwork/labs/boston_housing.csv'
+
+boston_df.describe()
+boston_df.head(10)
+
+#Task 2: Question 1
+ax = sns.boxplot(y = 'MEDV', data = boston_df)
+ax.set_title('Owner-occupied homes')
+ax2.set_title('Number of homes near Charles River')
+
+#Task 2: Question 2
+sns.catplot(x = 'CHAS', kind = 'count', data = boston_df)
+
+#Task 2: Question 3
+boston_df.loc[(boston_df['AGE'] <= 35), 'Age_Group'] = '35 years and younger'
+boston_df.loc[(boston_df['AGE'] > 35) & (boston_df['AGE'] < 70), 'Age_Group'] = 'Between 35 and 70 years'
+boston_df.loc[(boston_df['AGE'] >= 70), 'Age_Group'] = '70 years and older'
+ax3 = sns.boxplot(x = 'MEDV', y = 'Age_Group', data = boston_df)
+ax3.set_title('Median value of owner-occupied homes by Age Group')
+
+#Task 2: Question 4
+ax4 = sns.scatterplot(y = 'NOX', x = 'INDUS', data = boston_df)
+ax4.set_title('Nitric oxide concentration per portion of non-retail business acres per town')
+
+#Task 2: Question 5
+pyplot.hist(boston_df["PTRATIO"])
+pyplot.title("Histogram of pupil to teacher ratio")
+pyplot.xlabel("Pupil to teacher ratio")
+pyplot.ylabel("Number of neighborhoods")
+
+# Task 3: Question 1
+scipy.stats
+sns.boxplot(x = 'CHAS', y = 'MEDV', data = boston_df).set_title('Median value of houses bounded by Charles River')
+
+scipy.stats.ttest_ind(boston_df[boston_df['CHAS'] == 0]['MEDV'], boston_df[boston_df['CHAS'] == 1]['MEDV'], equal_var = True)
+
+boston_df.loc[(boston_df['AGE'] <= 35), 'Age_Group'] = '35 years and younger'
+boston_df.loc[(boston_df['AGE'] > 35) & (boston_df['AGE'] < 70), 'Age_Group'] = 'between 35 and 70 years'
+boston_df.loc[(boston_df['AGE'] >= 70), 'Age_Group'] = '70 years and older'
+
+# Task 3:  Question 2
+ax3 = sns.boxplot(x = 'MEDV', y = 'Age_Group', data = boston_df)
+ax3.set_title('Median value of owner-occupied homes per age group')
+
+# Task 3:  Question 3
+sns.relplot(x = 'NOX', y = 'INDUS', data = boston_df).set(title = 'Nitric Oxide Concentrations and Proportion of Non-retail Business Acres per Town')
+scipy.stats.pearsonr(boston_df['NOX'], boston_df['INDUS'])
+
+# Task 3:  Question 4
+sns.relplot(x = 'DIS', y = 'MEDV', data = boston_df).set(title = 'Weighted Distance to the Five Boston Employment Centres against the Median Value of Owner Occupied Homes')
+scipy.stats.pearsonr(boston_df['DIS'], boston_df['MEDV'])
